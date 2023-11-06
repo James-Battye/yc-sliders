@@ -1,20 +1,20 @@
 {
-  "name": "@finsweet/developer-starter",
+  "name": "@yes-chef/yes-chef-sliders",
   "version": "0.0.0",
-  "description": "Developer starter template for Finsweet projects.",
-  "homepage": "https://github.com/finsweet/developer-starter#readme",
+  "description": "OS Project for YC Webflow Slider.",
+  "homepage": "https://github.com/yes-chef/yes-chef-sliders#readme",
   "license": "ISC",
   "keywords": [],
   "author": {
-    "name": "Finsweet",
-    "url": "https://finsweet.com/"
+    "name": "yes-chef",
+    "url": "https://yes-chef.com/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finsweet/developer-starter.git"
+    "url": "git+https://github.com/yes-chef/yes-chef-sliders.git"
   },
   "bugs": {
-    "url": "https://github.com/finsweet/developer-starter/issues"
+    "url": "https://github.com/yes-chef/yes-chef-sliders/issues"
   },
   "type": "module",
   "main": "src/index.ts",
@@ -52,7 +52,8 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
-    "@finsweet/ts-utils": "^0.39.2"
+    "@finsweet/ts-utils": "^0.39.2",
+    "swiper": "^11.0.3"
   },
   "engines": {
     "pnpm": ">=8"
