@@ -4,7 +4,7 @@ export function getNavigationParams(list: HTMLElement) {
   let navigationParams = {};
 
   if (list.getAttribute('navigation')) {
-    const nav = list.querySelector<HTMLElement>(`slider-element='navigation']`);
+    const nav = list.querySelector<HTMLElement>(`[slider-element='navigation']`);
     if (!nav) {
       return console.error('No nav wrapper element on the page.');
     }
