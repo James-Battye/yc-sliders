@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.0.3
+
+### Patch Changes
+
+- 4bbae14: Adjusted selector on modules
+
 ## 0.0.2
 
 ### Patch Changes
