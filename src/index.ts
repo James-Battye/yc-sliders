@@ -38,10 +38,10 @@ sliders.forEach((e, index) => {
   // End of Error Handling
 
   // Custom Modules
-  const navigationParams = getNavigationParams(list) ?? {};
-  const paginationParams = getPaginationParams(list) ?? {};
-  const autoplayParams = getAutoplayParams(list) ?? {};
-  const direction = getDirection(list);
+  const navigationParams = getNavigationParams(e) ?? {};
+  const paginationParams = getPaginationParams(e) ?? {};
+  const autoplayParams = getAutoplayParams(e) ?? {};
+  const direction = getDirection(e);
   // End of Custom Modules
 
   // Identifying class of list and item elements

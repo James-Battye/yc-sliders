@@ -1,10 +1,10 @@
 import { getFirstWord } from './getClassName';
 
-export function getNavigationParams(list: HTMLElement) {
+export function getNavigationParams(component: HTMLElement) {
   let navigationParams = {};
 
-  if (list.getAttribute('navigation')) {
-    const nav = list.querySelector<HTMLElement>(`[slider-element='navigation']`);
+  if (component.getAttribute('navigation')) {
+    const nav = component.querySelector<HTMLElement>(`[slider-element='navigation']`);
     if (!nav) {
       return console.error('No nav wrapper element on the page.');
     }
@@ -31,11 +31,11 @@ export function getNavigationParams(list: HTMLElement) {
   return navigationParams;
 }
 
-export function getPaginationParams(list: HTMLElement) {
+export function getPaginationParams(component: HTMLElement) {
   let paginationParams = {};
 
-  if (list.getAttribute('pagination')) {
-    const paginationElement = list.querySelector<HTMLElement>(`[slider-element='pagination']`);
+  if (component.getAttribute('pagination')) {
+    const paginationElement = component.querySelector<HTMLElement>(`[slider-element='pagination']`);
     if (!paginationElement) {
       return console.error('no paginationElement');
     }
@@ -66,13 +66,13 @@ export function getPaginationParams(list: HTMLElement) {
   return paginationParams;
 }
 
-export function getAutoplayParams(list: HTMLElement) {
+export function getAutoplayParams(component: HTMLElement) {
   let autoplayParams = {};
 
-  if (list.getAttribute('slider-autoplay')) {
+  if (component.getAttribute('slider-autoplay')) {
     autoplayParams = {
       enabled: true,
-      delay: parseInt(list.getAttribute('autoplay-delay') || '4000') || 4000,
+      delay: parseInt(component.getAttribute('autoplay-delay') || '4000') || 4000,
     };
   } else {
     autoplayParams = {
@@ -83,7 +83,7 @@ export function getAutoplayParams(list: HTMLElement) {
   return autoplayParams;
 }
 
-export function getDirection(list: HTMLElement): 'horizontal' | 'vertical' {
-  const directionAttr = list.getAttribute('speed') as 'horizontal' | 'vertical';
+export function getDirection(component: HTMLElement): 'horizontal' | 'vertical' {
+  const directionAttr = component.getAttribute('speed') as 'horizontal' | 'vertical';
   return ['horizontal', 'vertical'].includes(directionAttr) ? directionAttr : 'horizontal';
 }
