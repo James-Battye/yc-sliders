@@ -1,20 +1,20 @@
 import { getFirstWord } from './getClassName';
 
-export function getNavigationParams(component: HTMLElement) {
+export function getNavigationParams(component: HTMLElement, list: HTMLElement) {
   let navigationParams = {};
 
-  if (component.getAttribute('navigation')) {
-    const nav = component.querySelector<HTMLElement>(`[slider-element='navigation']`);
+  if (list.getAttribute('yc-slider-navigation')) {
+    const nav = component.querySelector<HTMLElement>(`[yc-slider-element='navigation']`);
     if (!nav) {
       return console.error('No nav wrapper element on the page.');
     }
 
-    const nextArrow = nav.querySelector<HTMLElement>(`[slider-element='next-arrow']`);
+    const nextArrow = nav.querySelector<HTMLElement>(`[yc-slider-element='next-arrow']`);
     if (!nextArrow) {
       return console.error('no nextArrow');
     }
 
-    const prevArrow = nav.querySelector<HTMLElement>(`[slider-element='prev-arrow']`);
+    const prevArrow = nav.querySelector<HTMLElement>(`[yc-slider-element='prev-arrow']`);
     if (!prevArrow) {
       return console.error('no prevArrow');
     }
@@ -31,17 +31,19 @@ export function getNavigationParams(component: HTMLElement) {
   return navigationParams;
 }
 
-export function getPaginationParams(component: HTMLElement) {
+export function getPaginationParams(component: HTMLElement, list: HTMLElement) {
   let paginationParams = {};
 
-  if (component.getAttribute('pagination')) {
-    const paginationElement = component.querySelector<HTMLElement>(`[slider-element='pagination']`);
+  if (list.getAttribute('yc-slider-pagination')) {
+    const paginationElement = component.querySelector<HTMLElement>(
+      `[yc-slider-element='pagination']`
+    );
     if (!paginationElement) {
       return console.error('no paginationElement');
     }
 
     const paginationDot = paginationElement?.querySelector<HTMLElement>(
-      `[slider-element='pagination-dot']`
+      `[yc-slider-element='pagination-dot']`
     );
     if (!paginationDot) {
       return console.error('no paginationDot');
@@ -66,13 +68,13 @@ export function getPaginationParams(component: HTMLElement) {
   return paginationParams;
 }
 
-export function getAutoplayParams(component: HTMLElement) {
+export function getAutoplayParams(component: HTMLElement, list: HTMLElement) {
   let autoplayParams = {};
 
-  if (component.getAttribute('slider-autoplay')) {
+  if (list.getAttribute('yc-slider-autoplay')) {
     autoplayParams = {
       enabled: true,
-      delay: parseInt(component.getAttribute('autoplay-delay') || '4000') || 4000,
+      delay: parseInt(list.getAttribute('yc-slider-autoplay-delay') || '4000') || 4000,
     };
   } else {
     autoplayParams = {
@@ -83,7 +85,7 @@ export function getAutoplayParams(component: HTMLElement) {
   return autoplayParams;
 }
 
-export function getDirection(component: HTMLElement): 'horizontal' | 'vertical' {
-  const directionAttr = component.getAttribute('speed') as 'horizontal' | 'vertical';
+export function getDirection(list: HTMLElement): 'horizontal' | 'vertical' {
+  const directionAttr = list.getAttribute('speed') as 'horizontal' | 'vertical';
   return ['horizontal', 'vertical'].includes(directionAttr) ? directionAttr : 'horizontal';
 }

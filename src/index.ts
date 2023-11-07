@@ -10,37 +10,37 @@ import {
   getPaginationParams,
 } from './helpers/moduleSelector';
 
-const sliders = document.querySelectorAll<HTMLElement>(`[slider-element='slider-component']`);
+const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-element='slider-component']`);
 
 const swiperElements: { [key: string]: Swiper } = {};
 
 sliders.forEach((e, index) => {
-  const wrapper = e.querySelector<HTMLElement>(`[slider-element='wrapper']`);
-  const list = e.querySelector<HTMLElement>(`[slider-element='list']`);
-  const item = e.querySelector<HTMLElement>(`[slider-element='item']`);
+  const wrapper = e.querySelector<HTMLElement>(`[yc-slider-element='wrapper']`);
+  const list = e.querySelector<HTMLElement>(`[yc-slider-element='list']`);
+  const item = e.querySelector<HTMLElement>(`[yc-slider-element='item']`);
 
   // Error Handling
   if (!wrapper) {
     return console.error(
-      'Error: The wrapper element could not be found. Please ensure that an element with [slider-element="wrapper"] exists.'
+      'Error: The wrapper element could not be found. Please ensure that an element with [yc-slider-element="wrapper"] exists.'
     );
   }
   if (!list) {
     return console.error(
-      'Error: The list element could not be found. Please ensure that an element with [slider-element="list"] exists.'
+      'Error: The list element could not be found. Please ensure that an element with [yc-slider-element="list"] exists.'
     );
   }
   if (!item) {
     return console.error(
-      'Error: The item element could not be found. Please ensure that an element with [slider-element="item"] exists.'
+      'Error: The item element could not be found. Please ensure that an element with [yc-slider-element="item"] exists.'
     );
   }
   // End of Error Handling
 
   // Custom Modules
-  const navigationParams = getNavigationParams(e) ?? {};
-  const paginationParams = getPaginationParams(e) ?? {};
-  const autoplayParams = getAutoplayParams(e) ?? {};
+  const navigationParams = getNavigationParams(e, list) ?? {};
+  const paginationParams = getPaginationParams(e, list) ?? {};
+  const autoplayParams = getAutoplayParams(e, list) ?? {};
   const direction = getDirection(e);
   // End of Custom Modules
 
@@ -52,10 +52,10 @@ sliders.forEach((e, index) => {
   // Setting Swiper Parameters
   const swiperParams: SwiperOptions = {
     modules: [Navigation, Pagination, Autoplay],
-    speed: parseInt(list.getAttribute('speed') || '400') || 400,
-    spaceBetween: parseInt(list.getAttribute('slide-gap') || '0') || 0,
-    slidesPerView: parseInt(list.getAttribute('slides-visible') || '1') || 1,
-    loop: list.getAttribute('loop') === 'true' || true,
+    speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
+    spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
+    slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
+    loop: list.getAttribute('yc-slider-loop') === 'true' || true,
     direction: direction,
     wrapperClass: listClass,
     slideClass: itemClass,
