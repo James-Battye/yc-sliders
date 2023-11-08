@@ -1,9 +1,9 @@
 import { getFirstWord } from './getClassName';
 
-export function getNavigationParams(component: HTMLElement, list: HTMLElement) {
+export function getNavigationParams(component: HTMLElement) {
   let navigationParams = {};
 
-  if (list.getAttribute('yc-slider-navigation')) {
+  if (component.querySelector("[yc-slider-element='navigation']")) {
     const nav = component.querySelector<HTMLElement>(`[yc-slider-element='navigation']`);
     if (!nav) {
       return console.error('No nav wrapper element on the page.');
@@ -31,10 +31,10 @@ export function getNavigationParams(component: HTMLElement, list: HTMLElement) {
   return navigationParams;
 }
 
-export function getPaginationParams(component: HTMLElement, list: HTMLElement) {
+export function getPaginationParams(component: HTMLElement) {
   let paginationParams = {};
 
-  if (list.getAttribute('yc-slider-pagination')) {
+  if (component.querySelector("[yc-slider-element='pagination']")) {
     const paginationElement = component.querySelector<HTMLElement>(
       `[yc-slider-element='pagination']`
     );
@@ -68,7 +68,7 @@ export function getPaginationParams(component: HTMLElement, list: HTMLElement) {
   return paginationParams;
 }
 
-export function getAutoplayParams(component: HTMLElement, list: HTMLElement) {
+export function getAutoplayParams(list: HTMLElement) {
   let autoplayParams = {};
 
   if (list.getAttribute('yc-slider-autoplay')) {

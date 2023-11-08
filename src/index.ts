@@ -38,10 +38,10 @@ sliders.forEach((e, index) => {
   // End of Error Handling
 
   // Custom Modules
-  const navigationParams = getNavigationParams(e, list) ?? {};
-  const paginationParams = getPaginationParams(e, list) ?? {};
-  const autoplayParams = getAutoplayParams(e, list) ?? {};
-  const direction = getDirection(e);
+  const navigationParams = getNavigationParams(e) ?? {};
+  const paginationParams = getPaginationParams(e) ?? {};
+  const autoplayParams = getAutoplayParams(list) ?? {};
+  const direction = getDirection(list);
   // End of Custom Modules
 
   // Identifying class of list and item elements
@@ -65,5 +65,19 @@ sliders.forEach((e, index) => {
   };
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
-  swiperElements[`swiperInstance${index}`] = swiperInstance;
+  swiperElements[`swiperInstance-${index}`] = swiperInstance;
 });
+
+declare global {
+  interface Window {
+    ycAttributes: {
+      swiperElements: { [key: string]: Swiper };
+    };
+  }
+}
+
+// Ensure ycAttributes is defined
+window.ycAttributes = window.ycAttributes || {};
+
+// Attach swiperElements to ycAttributes
+window.ycAttributes.swiperElements = swiperElements;
