@@ -5,6 +5,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
 import {
   getAutoplayParams,
+  getBreakpointParams,
   getDirection,
   getNavigationParams,
   getPaginationParams,
@@ -42,6 +43,7 @@ sliders.forEach((e, index) => {
   const paginationParams = getPaginationParams(e) ?? {};
   const autoplayParams = getAutoplayParams(list) ?? {};
   const direction = getDirection(list);
+  const breakpoints = getBreakpointParams(list);
   // End of Custom Modules
 
   // Identifying class of list and item elements
@@ -55,17 +57,20 @@ sliders.forEach((e, index) => {
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
     slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
-    loop: list.getAttribute('yc-slider-loop') === 'true' || true,
+    loop: list.getAttribute('yc-slider-loop') === 'true' ? true : false || false,
     direction: direction,
     wrapperClass: listClass,
     slideClass: itemClass,
     navigation: navigationParams,
     pagination: paginationParams,
     autoplay: autoplayParams,
+    breakpoints: breakpoints,
   };
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
   swiperElements[`swiperInstance-${index}`] = swiperInstance;
+
+  console.log(list.getAttribute('yc-slider-loop') === 'true' ? true : false);
 });
 
 declare global {
@@ -81,3 +86,5 @@ window.ycAttributes = window.ycAttributes || {};
 
 // Attach swiperElements to ycAttributes
 window.ycAttributes.swiperElements = swiperElements;
+
+window.ycAttributes.swiperElements['swiperInstance-0'].loop = false;
