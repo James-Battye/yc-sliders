@@ -14,7 +14,7 @@ import {
 
 const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
 
-const swiperElements: { [key: string]: Swiper } = {};
+const sliderInstances: { [key: string]: Swiper } = {};
 
 sliders.forEach((e) => {
   const wrapper = e.querySelector<HTMLElement>(`[yc-slider-element='wrapper']`);
@@ -76,13 +76,13 @@ sliders.forEach((e) => {
   }
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
-  swiperElements[`${e.getAttribute('yc-slider-component')}`] = swiperInstance;
+  sliderInstances[`${e.getAttribute('yc-slider-component')}`] = swiperInstance;
 });
 
 declare global {
   interface Window {
     ycAttributes: {
-      swiperElements: { [key: string]: Swiper };
+      sliders: { [key: string]: Swiper };
     };
   }
 }
@@ -90,5 +90,5 @@ declare global {
 // Ensure ycAttributes is defined
 window.ycAttributes = window.ycAttributes || {};
 
-// Attach swiperElements to ycAttributes
-window.ycAttributes.swiperElements = swiperElements;
+// Attach sliderInstances to ycAttributes
+window.ycAttributes.sliders = sliderInstances;
