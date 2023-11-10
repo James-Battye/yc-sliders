@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.0.5
+
+### Patch Changes
+
+- 2862f66: pnpm changeset
+
 ## 0.0.4
 
 ### Patch Changes
