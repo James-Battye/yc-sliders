@@ -126,5 +126,12 @@ export function getEffectsParams(list: HTMLElement) {
     };
   }
 
+  if (list.getAttribute('yc-slider-effect') === 'fade') {
+    effects.effects = 'fade';
+    effects.fadeEffect = {
+      crossFade: true,
+    };
+  }
+
   return effects;
 }
