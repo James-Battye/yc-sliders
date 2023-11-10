@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.0
+
+### Minor Changes
+
+- 59c3f8c: Added names on global swiper instances
+
 ## 0.0.5
 
 ### Patch Changes
