@@ -1,21 +1,22 @@
 import type { SwiperOptions } from 'node_modules/swiper/types/swiper-options';
 import { getFirstWord } from 'src/helpers/getClassName';
 import { Swiper } from 'swiper';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 import {
   getAutoplayParams,
   getBreakpointParams,
   getDirection,
+  getEffectsParams,
   getNavigationParams,
   getPaginationParams,
 } from './helpers/moduleSelector';
 
-const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-element='slider-component']`);
+const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
 
 const swiperElements: { [key: string]: Swiper } = {};
 
-sliders.forEach((e, index) => {
+sliders.forEach((e) => {
   const wrapper = e.querySelector<HTMLElement>(`[yc-slider-element='wrapper']`);
   const list = e.querySelector<HTMLElement>(`[yc-slider-element='list']`);
   const item = e.querySelector<HTMLElement>(`[yc-slider-element='item']`);
@@ -44,6 +45,7 @@ sliders.forEach((e, index) => {
   const autoplayParams = getAutoplayParams(list) ?? {};
   const direction = getDirection(list);
   const breakpoints = getBreakpointParams(list);
+  const effects = getEffectsParams(list);
   // End of Custom Modules
 
   // Identifying class of list and item elements
@@ -53,7 +55,7 @@ sliders.forEach((e, index) => {
 
   // Setting Swiper Parameters
   const swiperParams: SwiperOptions = {
-    modules: [Navigation, Pagination, Autoplay],
+    modules: [Navigation, Pagination, Autoplay, EffectFade],
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
     slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
@@ -65,12 +67,16 @@ sliders.forEach((e, index) => {
     pagination: paginationParams,
     autoplay: autoplayParams,
     breakpoints: breakpoints,
+    effect: effects.effects,
   };
 
-  const swiperInstance = new Swiper(wrapper, swiperParams);
-  swiperElements[`swiperInstance-${index}`] = swiperInstance;
+  // adding custom effect objects
+  if (effects.fadeEffect) {
+    swiperParams.fadeEffect = effects.fadeEffect;
+  }
 
-  console.log(list.getAttribute('yc-slider-loop') === 'true' ? true : false);
+  const swiperInstance = new Swiper(wrapper, swiperParams);
+  swiperElements[`${e.getAttribute('yc-slider-component')}`] = swiperInstance;
 });
 
 declare global {
@@ -86,5 +92,3 @@ window.ycAttributes = window.ycAttributes || {};
 
 // Attach swiperElements to ycAttributes
 window.ycAttributes.swiperElements = swiperElements;
-
-window.ycAttributes.swiperElements['swiperInstance-0'].loop = false;

@@ -43,7 +43,7 @@ export function getPaginationParams(component: HTMLElement) {
     }
 
     const paginationDot = paginationElement?.querySelector<HTMLElement>(
-      `[yc-slider-element='pagination-dot']`
+      "[yc-slider-element='pagination-dot']"
     );
     if (!paginationDot) {
       return console.error('no paginationDot');
@@ -112,4 +112,19 @@ export function getBreakpointParams(list: HTMLElement) {
   }
 
   return breakpointParams;
+}
+
+export function getEffectsParams(list: HTMLElement) {
+  const effects: { effects: string; [key: string]: any } = {
+    effects: 'none',
+  };
+
+  if (list.getAttribute('yc-slider-effect') === 'fade') {
+    effects.effects = 'fade';
+    effects.fadeEffect = {
+      crossFade: true,
+    };
+  }
+
+  return effects;
 }
