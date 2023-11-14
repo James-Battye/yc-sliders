@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.2
+
+### Patch Changes
+
+- 73b8c96: Added controller support
+
 ## 0.1.1
 
 ### Patch Changes
