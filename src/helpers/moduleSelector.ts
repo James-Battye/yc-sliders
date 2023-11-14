@@ -86,7 +86,7 @@ export function getAutoplayParams(list: HTMLElement) {
 }
 
 export function getDirection(list: HTMLElement): 'horizontal' | 'vertical' {
-  const directionAttr = list.getAttribute('speed') as 'horizontal' | 'vertical';
+  const directionAttr = list.getAttribute('yc-slider-direction') as 'horizontal' | 'vertical';
   return ['horizontal', 'vertical'].includes(directionAttr) ? directionAttr : 'horizontal';
 }
 

@@ -61,6 +61,8 @@ sliders.forEach((e) => {
     slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
     loop: list.getAttribute('yc-slider-loop') === 'true' ? true : false || false,
     direction: direction,
+    // TODO: Add initial Slide attribute
+    initialSlide: parseInt(list.getAttribute('yc-slider-initial-slide') || '0') || 0,
     wrapperClass: listClass,
     slideClass: itemClass,
     navigation: navigationParams,
