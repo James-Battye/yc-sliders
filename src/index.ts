@@ -1,7 +1,7 @@
 import type { SwiperOptions } from 'node_modules/swiper/types/swiper-options';
 import { getFirstWord } from 'src/helpers/getClassName';
 import { Swiper } from 'swiper';
-import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Controller, EffectFade, Navigation, Pagination } from 'swiper/modules';
 
 import {
   getAutoplayParams,
@@ -55,13 +55,12 @@ sliders.forEach((e) => {
 
   // Setting Swiper Parameters
   const swiperParams: SwiperOptions = {
-    modules: [Navigation, Pagination, Autoplay, EffectFade],
+    modules: [Navigation, Pagination, Autoplay, EffectFade, Controller],
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
     slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
     loop: list.getAttribute('yc-slider-loop') === 'true' ? true : false || false,
     direction: direction,
-    // TODO: Add initial Slide attribute
     initialSlide: parseInt(list.getAttribute('yc-slider-initial-slide') || '0') || 0,
     wrapperClass: listClass,
     slideClass: itemClass,
@@ -70,6 +69,9 @@ sliders.forEach((e) => {
     autoplay: autoplayParams,
     breakpoints: breakpoints,
     effect: effects.effects,
+    controller: {
+      control: null,
+    },
   };
 
   // adding custom effect objects
