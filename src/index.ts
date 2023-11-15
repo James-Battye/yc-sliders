@@ -81,6 +81,28 @@ sliders.forEach((e) => {
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
   sliderInstances[`${e.getAttribute('yc-slider-component')}`] = swiperInstance;
+
+  if (effects.fadeEffect) {
+    // Create a new style element
+    const style = document.createElement('style');
+
+    // Define the CSS rules you want to add
+    const faceCss = `
+  .${itemClass} {
+    pointer-events: none;
+  }
+
+  .${itemClass}.swiper-slide-active {
+    pointer-events: auto;
+  }
+`;
+
+    // Set the CSS text of the style element
+    style.textContent = faceCss;
+
+    // Append the style element to the document head
+    document.head.appendChild(style);
+  }
 });
 
 declare global {
