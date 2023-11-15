@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.3
+
+### Patch Changes
+
+- 1ab5497: Fixed Fade Bug
+
 ## 0.1.2
 
 ### Patch Changes
