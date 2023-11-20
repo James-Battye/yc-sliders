@@ -1,7 +1,15 @@
 import type { SwiperOptions } from 'node_modules/swiper/types/swiper-options';
 import { getFirstWord } from 'src/helpers/getClassName';
 import { Swiper } from 'swiper';
-import { Autoplay, Controller, EffectFade, Navigation, Pagination } from 'swiper/modules';
+import {
+  Autoplay,
+  Controller,
+  EffectCards,
+  EffectCreative,
+  EffectFade,
+  Navigation,
+  Pagination,
+} from 'swiper/modules';
 
 import {
   getAutoplayParams,
@@ -55,7 +63,15 @@ sliders.forEach((e) => {
 
   // Setting Swiper Parameters
   const swiperParams: SwiperOptions = {
-    modules: [Navigation, Pagination, Autoplay, EffectFade, Controller],
+    modules: [
+      Navigation,
+      Pagination,
+      Autoplay,
+      EffectFade,
+      Controller,
+      EffectCards,
+      EffectCreative,
+    ],
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
     slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
@@ -69,6 +85,8 @@ sliders.forEach((e) => {
     autoplay: autoplayParams,
     breakpoints: breakpoints,
     effect: effects.effects,
+    grabCursor: true,
+    centeredSlides: true,
     controller: {
       control: null,
     },
@@ -79,26 +97,32 @@ sliders.forEach((e) => {
     swiperParams.fadeEffect = effects.fadeEffect;
   }
 
+  if (effects.effects === 'cards') {
+    swiperParams.cardsEffect = effects.cardEffect;
+  }
+
+  if (effects.effects === 'creative') {
+    swiperParams.creativeEffect = effects.creativeEffect;
+  }
+
   const swiperInstance = new Swiper(wrapper, swiperParams);
   sliderInstances[`${e.getAttribute('yc-slider-component')}`] = swiperInstance;
 
   if (effects.fadeEffect) {
-    // Create a new style element
     const style = document.createElement('style');
 
-    // Define the CSS rules you want to add
-    const faceCss = `
-  .${itemClass} {
-    pointer-events: none;
-  }
+    const fadeCss = `
+      .${itemClass} {
+        pointer-events: none;
+      }
 
-  .${itemClass}.swiper-slide-active {
-    pointer-events: auto;
-  }
-`;
+      .${itemClass}.swiper-slide-active {
+        pointer-events: auto;
+      }
+    `;
 
     // Set the CSS text of the style element
-    style.textContent = faceCss;
+    style.textContent = fadeCss;
 
     // Append the style element to the document head
     document.head.appendChild(style);

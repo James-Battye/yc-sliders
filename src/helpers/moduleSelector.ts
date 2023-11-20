@@ -1,3 +1,5 @@
+import type { SwiperOptions } from 'swiper/types/swiper-options';
+
 import { getFirstWord } from './getClassName';
 
 export function getNavigationParams(component: HTMLElement) {
@@ -126,10 +128,29 @@ export function getEffectsParams(list: HTMLElement) {
     };
   }
 
-  if (list.getAttribute('yc-slider-effect') === 'fade') {
-    effects.effects = 'fade';
-    effects.fadeEffect = {
-      crossFade: true,
+  if (
+    list.getAttribute('yc-slider-effect') === 'cards' ||
+    list.getAttribute('yc-slider-effect') === 'card'
+  ) {
+    effects.effects = 'cards';
+    effects.cardEffect = {
+      perSlideOffset: 64,
+      perSlideRotate: -2,
+      slideShadows: true,
+    };
+  }
+
+  if (list.getAttribute('yc-slider-effect') === 'creative') {
+    effects.effects = 'creative';
+    effects.creativeEffect = {
+      next: {
+        translate: ['80%', '-2rem', 0],
+        scale: 0.9,
+      },
+      prev: {
+        translate: ['-80%', '-2rem', 0],
+        scale: 0.9,
+      },
     };
   }
 
