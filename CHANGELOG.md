@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.6
+
+### Patch Changes
+
+- afc32e0: Fix bug
+
 ## 0.1.5
 
 ### Patch Changes
