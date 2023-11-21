@@ -24,7 +24,7 @@ const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
 
 const sliderInstances: { [key: string]: Swiper } = {};
 
-sliders.forEach((e) => {
+sliders.forEach((e, index) => {
   const wrapper = e.querySelector<HTMLElement>(`[yc-slider-element='wrapper']`);
   const list = e.querySelector<HTMLElement>(`[yc-slider-element='list']`);
   const item = e.querySelector<HTMLElement>(`[yc-slider-element='item']`);
@@ -86,6 +86,7 @@ sliders.forEach((e) => {
     breakpoints: breakpoints,
     effect: effects.effects,
     grabCursor: true,
+    init: list.getAttribute('yc-slider-init') === 'true' ? true : false || false,
     centeredSlides: true,
     controller: {
       control: null,
@@ -106,7 +107,7 @@ sliders.forEach((e) => {
   }
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
-  sliderInstances[`${e.getAttribute('yc-slider-component')}`] = swiperInstance;
+  sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = swiperInstance;
 
   if (effects.fadeEffect) {
     const style = document.createElement('style');
