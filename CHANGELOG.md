@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.5
+
+### Patch Changes
+
+- 8bcc3a3: added init function
+
 ## 0.1.4
 
 ### Patch Changes
