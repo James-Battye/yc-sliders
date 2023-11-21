@@ -86,7 +86,7 @@ sliders.forEach((e, index) => {
     breakpoints: breakpoints,
     effect: effects.effects,
     grabCursor: true,
-    init: list.getAttribute('yc-slider-init') === 'true' ? true : false || false,
+    init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,
     centeredSlides: true,
     controller: {
       control: null,
