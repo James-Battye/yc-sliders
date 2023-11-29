@@ -1,5 +1,12 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.7
+
+### Patch Changes
+
+- adf22e8: Added semesters
+- f7062f4: added auto support for slides per view
+
 ## 0.1.6
 
 ### Patch Changes
