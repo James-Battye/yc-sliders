@@ -87,6 +87,7 @@ sliders.forEach((e, index) => {
     pagination: paginationParams,
     autoplay: autoplayParams,
     breakpoints: breakpoints,
+    centeredSlides: list.getAttribute('yc-slider-centered') === 'true' ? true : false || false,
     effect: effects.effects,
     grabCursor: true,
     init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,
