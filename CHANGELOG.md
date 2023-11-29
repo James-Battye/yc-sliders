@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.8
+
+### Patch Changes
+
+- 4be98fb: Added centered slides
+
 ## 0.1.7
 
 ### Patch Changes
