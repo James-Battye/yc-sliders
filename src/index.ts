@@ -27,7 +27,7 @@ const sliderInstances: { [key: string]: Swiper } = {};
 sliders.forEach((e, index) => {
   const wrapper = e.querySelector<HTMLElement>(`[yc-slider-element='wrapper']`);
   const list = e.querySelector<HTMLElement>(`[yc-slider-element='list']`);
-  const item = e.querySelector<HTMLElement>(`[yc-slider-element='item']`);
+  const item = e.querySelectorAll<HTMLElement>(`[yc-slider-element='item']`);
 
   // Error Handling
   if (!wrapper) {
@@ -58,7 +58,7 @@ sliders.forEach((e, index) => {
 
   // Identifying class of list and item elements
   const listClass = getFirstWord(list);
-  const itemClass = getFirstWord(item);
+  const itemClass = getFirstWord(item[0]);
   // End of Identifying class of list and item elements
 
   // Setting Swiper Parameters
@@ -74,7 +74,10 @@ sliders.forEach((e, index) => {
     ],
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
-    slidesPerView: parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
+    slidesPerView:
+      list.getAttribute('yc-slider-slides-visible') === 'auto'
+        ? 'auto'
+        : parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
     loop: list.getAttribute('yc-slider-loop') === 'true' ? true : false || false,
     direction: direction,
     initialSlide: parseInt(list.getAttribute('yc-slider-initial-slide') || '0') || 0,
