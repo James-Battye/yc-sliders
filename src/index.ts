@@ -91,7 +91,6 @@ sliders.forEach((e, index) => {
     effect: effects.effects,
     grabCursor: true,
     init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,
-    centeredSlides: true,
     controller: {
       control: null,
     },
