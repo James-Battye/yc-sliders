@@ -84,6 +84,7 @@ sliders.forEach((e, index) => {
     wrapperClass: listClass,
     slideClass: itemClass,
     navigation: navigationParams,
+    loopAdditionalSlides: parseInt(list.getAttribute('yc-slider-additional-slides') || '0') || 0,
     pagination: paginationParams,
     autoplay: autoplayParams,
     breakpoints: breakpoints,
