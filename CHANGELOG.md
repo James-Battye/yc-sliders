@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.11
+
+### Patch Changes
+
+- 62d1574: Added double slides support
+
 ## 0.1.10
 
 ### Patch Changes
