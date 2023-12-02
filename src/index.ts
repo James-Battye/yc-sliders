@@ -61,6 +61,13 @@ sliders.forEach((e, index) => {
   const itemClass = getFirstWord(item[0]);
   // End of Identifying class of list and item elements
 
+  if (list.getAttribute('yc-slider-double-slides')) {
+    item.forEach((item) => {
+      const clone = item.cloneNode(true) as HTMLElement;
+      list.appendChild(clone);
+    });
+  }
+
   // Setting Swiper Parameters
   const swiperParams: SwiperOptions = {
     modules: [
