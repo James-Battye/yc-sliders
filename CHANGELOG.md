@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.10
+
+### Patch Changes
+
+- 3a479a0: Added support for loop additional slides
+
 ## 0.1.9
 
 ### Patch Changes
