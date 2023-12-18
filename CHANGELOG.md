@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.12
+
+### Patch Changes
+
+- 3c7e4d6: Added support for grab cursor and allow touch move
+
 ## 0.1.11
 
 ### Patch Changes
