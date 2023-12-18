@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.14
+
+### Patch Changes
+
+- 423dce5: Fixed again
+
 ## 0.1.13
 
 ### Patch Changes
