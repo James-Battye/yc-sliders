@@ -97,8 +97,16 @@ sliders.forEach((e, index) => {
     breakpoints: breakpoints,
     centeredSlides: list.getAttribute('yc-slider-centered') === 'true' ? true : false || false,
     effect: effects.effects,
-    grabCursor: list.getAttribute('yc-slider-grab-cursor') ? true : false,
-    allowTouchMove: list.getAttribute('yc-slider-swipe-to-change') ? true : false,
+    grabCursor:
+      list.hasAttribute('yc-slider-grab-cursor') &&
+      list.getAttribute('yc-slider-grab-cursor') === 'false'
+        ? false
+        : true,
+    allowTouchMove:
+      list.hasAttribute('yc-slider-swipe-to-change') &&
+      list.getAttribute('yc-slider-swipe-to-change') === 'false'
+        ? false
+        : true,
     init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,
     controller: {
       control: null,
