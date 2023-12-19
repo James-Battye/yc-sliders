@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.15
+
+### Patch Changes
+
+- ac13125: Fixed issues with allow touch move and grab cursor
+
 ## 0.1.14
 
 ### Patch Changes
