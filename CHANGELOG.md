@@ -1,5 +1,12 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.16
+
+### Patch Changes
+
+- b7f1323: added accessibility support
+- b7f1323: issue with gh
+
 ## 0.1.15
 
 ### Patch Changes
