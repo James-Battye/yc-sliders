@@ -2,6 +2,7 @@ import type { SwiperOptions } from 'node_modules/swiper/types/swiper-options';
 import { getFirstWord } from 'src/helpers/getClassName';
 import { Swiper } from 'swiper';
 import {
+  A11y,
   Autoplay,
   Controller,
   EffectCards,
@@ -78,6 +79,7 @@ sliders.forEach((e, index) => {
       Controller,
       EffectCards,
       EffectCreative,
+      A11y,
     ],
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
@@ -90,11 +92,15 @@ sliders.forEach((e, index) => {
     initialSlide: parseInt(list.getAttribute('yc-slider-initial-slide') || '0') || 0,
     wrapperClass: listClass,
     slideClass: itemClass,
+    a11y: {
+      enabled: true,
+    },
     navigation: navigationParams,
     loopAdditionalSlides: parseInt(list.getAttribute('yc-slider-additional-slides') || '0') || 0,
     pagination: paginationParams,
     autoplay: autoplayParams,
     breakpoints: breakpoints,
+    slidesPerGroup: 1,
     centeredSlides: list.getAttribute('yc-slider-centered') === 'true' ? true : false || false,
     effect: effects.effects,
     grabCursor:
