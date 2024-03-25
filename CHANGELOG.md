@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 0.1.17
+
+### Patch Changes
+
+- 9ef9a75: added item role
+
 ## 0.1.16
 
 ### Patch Changes
