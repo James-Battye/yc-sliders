@@ -94,6 +94,7 @@ sliders.forEach((e, index) => {
     slideClass: itemClass,
     a11y: {
       enabled: true,
+      itemRoleDescriptionMessage: 'slider item',
     },
     navigation: navigationParams,
     loopAdditionalSlides: parseInt(list.getAttribute('yc-slider-additional-slides') || '0') || 0,
