@@ -1,25 +1,6 @@
-import type { SwiperOptions } from 'node_modules/swiper/types/swiper-options';
-import { getFirstWord } from 'src/helpers/getClassName';
 import { Swiper } from 'swiper';
-import {
-  A11y,
-  Autoplay,
-  Controller,
-  EffectCards,
-  EffectCreative,
-  EffectFade,
-  Navigation,
-  Pagination,
-} from 'swiper/modules';
+import { getSwiperConfig } from './config/swiperConfig';
 
-import {
-  getAutoplayParams,
-  getBreakpointParams,
-  getDirection,
-  getEffectsParams,
-  getNavigationParams,
-  getPaginationParams,
-} from './helpers/moduleSelector';
 
 const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
 
@@ -46,115 +27,19 @@ sliders.forEach((e, index) => {
       'Error: The item element could not be found. Please ensure that an element with [yc-slider-element="item"] exists.'
     );
   }
-  // End of Error Handling
-
-  // Custom Modules
-  const navigationParams = getNavigationParams(e) ?? {};
-  const paginationParams = getPaginationParams(e) ?? {};
-  const autoplayParams = getAutoplayParams(list) ?? {};
-  const direction = getDirection(list);
-  const breakpoints = getBreakpointParams(list);
-  const effects = getEffectsParams(list);
-  // End of Custom Modules
-
-  // Identifying class of list and item elements
-  const listClass = getFirstWord(list);
-  const itemClass = getFirstWord(item[0]);
-  // End of Identifying class of list and item elements
-
-  if (list.getAttribute('yc-slider-double-slides')) {
-    item.forEach((item) => {
-      const clone = item.cloneNode(true) as HTMLElement;
-      list.appendChild(clone);
-    });
+  if (item.length < 1) {
+    return console.error(
+      'Error: Only 1 slide, cannot create a slider.'
+    );
   }
 
-  // Setting Swiper Parameters
-  const swiperParams: SwiperOptions = {
-    modules: [
-      Navigation,
-      Pagination,
-      Autoplay,
-      EffectFade,
-      Controller,
-      EffectCards,
-      EffectCreative,
-      A11y,
-    ],
-    speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
-    spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
-    slidesPerView:
-      list.getAttribute('yc-slider-slides-visible') === 'auto'
-        ? 'auto'
-        : parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
-    loop: list.getAttribute('yc-slider-loop') === 'true' ? true : false || false,
-    direction: direction,
-    initialSlide: parseInt(list.getAttribute('yc-slider-initial-slide') || '0') || 0,
-    wrapperClass: listClass,
-    slideClass: itemClass,
-    a11y: {
-      enabled: true,
-      itemRoleDescriptionMessage: 'slider item',
-    },
-    navigation: navigationParams,
-    loopAdditionalSlides: parseInt(list.getAttribute('yc-slider-additional-slides') || '0') || 0,
-    pagination: paginationParams,
-    autoplay: autoplayParams,
-    breakpoints: breakpoints,
-    slidesPerGroup: 1,
-    centeredSlides: list.getAttribute('yc-slider-centered') === 'true' ? true : false || false,
-    effect: effects.effects,
-    grabCursor:
-      list.hasAttribute('yc-slider-grab-cursor') &&
-      list.getAttribute('yc-slider-grab-cursor') === 'false'
-        ? false
-        : true,
-    allowTouchMove:
-      list.hasAttribute('yc-slider-swipe-to-change') &&
-      list.getAttribute('yc-slider-swipe-to-change') === 'false'
-        ? false
-        : true,
-    init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,
-    controller: {
-      control: null,
-    },
-  };
-
-  // adding custom effect objects
-  if (effects.fadeEffect) {
-    swiperParams.fadeEffect = effects.fadeEffect;
-  }
-
-  if (effects.effects === 'cards') {
-    swiperParams.cardsEffect = effects.cardEffect;
-  }
-
-  if (effects.effects === 'creative') {
-    swiperParams.creativeEffect = effects.creativeEffect;
-  }
+  const swiperParams = getSwiperConfig(e, wrapper, list, item)
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
+
   sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = swiperInstance;
 
-  if (effects.fadeEffect) {
-    const style = document.createElement('style');
 
-    const fadeCss = `
-      .${itemClass} {
-        pointer-events: none;
-      }
-
-      .${itemClass}.swiper-slide-active {
-        pointer-events: auto;
-      }
-    `;
-
-    // Set the CSS text of the style element
-    style.textContent = fadeCss;
-
-    // Append the style element to the document head
-    document.head.appendChild(style);
-  }
 });
 
 declare global {
