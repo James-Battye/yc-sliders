@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 1.0.0
+
+### Major Changes
+
+- b3b59bc: Code Restructure and launch
+
 ## 0.1.17
 
 ### Patch Changes
