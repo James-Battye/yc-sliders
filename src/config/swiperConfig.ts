@@ -1,46 +1,52 @@
-import type { SwiperOptions } from "swiper/types/swiper-options";
-import { getPaginationParams } from "./paginationConfig";
-import { getAutoplayParams } from "./autoplayConfig";
-import { getBreakpointParams } from "./breakpointConfig";
-import { getDirection } from "./directionConfig";
-import { getEffectsParams } from "./effectsConfig";
-import { getNavigationParams } from "./navigationConfig";
-import { getFirstWord } from "../helpers/getClassName";
 import {
-    A11y,
-    Autoplay,
-    Controller,
-    EffectCards,
-    EffectCreative,
-    EffectFade,
-    Navigation,
-    Pagination,
-  } from 'swiper/modules';
+  A11y,
+  Autoplay,
+  Controller,
+  EffectCards,
+  EffectCreative,
+  EffectFade,
+  Navigation,
+  Pagination,
+} from 'swiper/modules';
+import type { SwiperOptions } from 'swiper/types/swiper-options';
+
+import { getFirstWord } from '../helpers/getClassName';
+import { getAutoplayParams } from './autoplayConfig';
+import { getBreakpointParams } from './breakpointConfig';
+import { getDirection } from './directionConfig';
+import { getEffectsParams } from './effectsConfig';
+import { getNavigationParams } from './navigationConfig';
+import { getPaginationParams } from './paginationConfig';
 
 // Function to generate the configuration for a Swiper instance based on the provided element
-export function getSwiperConfig(element: HTMLElement, wrapper: HTMLElement, list: HTMLElement, item: NodeListOf<HTMLElement>): SwiperOptions {
-    // Retrieve attribute-based configurations
-    const navigationParams = getNavigationParams(element);
-    const paginationParams = getPaginationParams(element);
-    const autoplayParams = getAutoplayParams(list);
-    const effectsParams = getEffectsParams(list);
-    const breakpointParams = getBreakpointParams(list)
-    const directionParams = getDirection(list)
+export function getSwiperConfig(
+  element: HTMLElement,
+  wrapper: HTMLElement,
+  list: HTMLElement,
+  item: NodeListOf<HTMLElement>
+): SwiperOptions {
+  // Retrieve attribute-based configurations
+  const navigationParams = getNavigationParams(element);
+  const paginationParams = getPaginationParams(element);
+  const autoplayParams = getAutoplayParams(list);
+  const effectsParams = getEffectsParams(list);
+  const breakpointParams = getBreakpointParams(list);
+  const directionParams = getDirection(list);
 
-    // Get list, wrapper and item classes
-    const itemClass = getFirstWord(item[0])
-    const listClass = getFirstWord(list)
+  // Get list, wrapper and item classes
+  const itemClass = getFirstWord(item[0]);
+  const listClass = getFirstWord(list);
 
-    // Duplicate slides
-    if (list.getAttribute('yc-slider-double-slides')) {
-        item.forEach((item) => {
-          const clone = item.cloneNode(true) as HTMLElement;
-          list.appendChild(clone);
-        });
-      }
+  // Duplicate slides
+  if (list.getAttribute('yc-slider-double-slides')) {
+    item.forEach((item) => {
+      const clone = item.cloneNode(true) as HTMLElement;
+      list.appendChild(clone);
+    });
+  }
 
-// Setting Swiper Parameters
-const swiperParams: SwiperOptions = {
+  // Setting Swiper Parameters
+  const swiperParams: SwiperOptions = {
     modules: [
       Navigation,
       Pagination,
@@ -121,5 +127,5 @@ const swiperParams: SwiperOptions = {
     swiperParams.creativeEffect = effectsParams.creativeEffect;
   }
 
-    return swiperParams;
+  return swiperParams;
 }
