@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.0
+
+### Major Changes
+
+- 339511b: v2 Launch
+
 ## 1.0.0
 
 ### Major Changes
