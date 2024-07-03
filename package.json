@@ -32,7 +32,8 @@
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "release": "changeset publish",
-    "update": "pnpm update -i -L -r"
+    "update": "pnpm update -i -L -r",
+    "launch": "git pull && pnpm changeset && git add . && git commit -m 'Automated changeset commit' && git push && echo 'Open Pull Requests: https://github.com/james-battye/yes-chef-sliders/pulls'"
   },
   "devDependencies": {
     "@changesets/changelog-git": "^0.1.14",

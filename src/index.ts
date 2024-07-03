@@ -1,6 +1,6 @@
 import { Swiper } from 'swiper';
-import { getSwiperConfig } from './config/swiperConfig';
 
+import { getSwiperConfig } from './config/swiperConfig';
 
 const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
 
@@ -28,18 +28,14 @@ sliders.forEach((e, index) => {
     );
   }
   if (item.length < 1) {
-    return console.error(
-      'Error: Only 1 slide, cannot create a slider.'
-    );
+    return console.error('Error: Only 1 slide, cannot create a slider.');
   }
 
-  const swiperParams = getSwiperConfig(e, wrapper, list, item)
+  const swiperParams = getSwiperConfig(e, wrapper, list, item);
 
   const swiperInstance = new Swiper(wrapper, swiperParams);
 
   sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = swiperInstance;
-
-
 });
 
 declare global {
