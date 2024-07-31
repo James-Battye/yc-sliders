@@ -26,11 +26,11 @@ export function getEffectsParams(list: HTMLElement) {
     effects.effects = 'creative';
     effects.creativeEffect = {
       next: {
-        translate: ['90%', '0', 0],
+        translate: ['90%', '-2rem', 0],
         scale: 0.9,
       },
       prev: {
-        translate: ['-90%', '0', 0],
+        translate: ['-90%', '-2rem', 0],
         scale: 0.9,
       },
     };
@@ -40,10 +40,10 @@ export function getEffectsParams(list: HTMLElement) {
     effects.effects = 'creative';
     effects.creativeEffect = {
       next: {
-        translate: ['80%', '-2rem', 0],
+        translate: ['80%', '0', 0],
       },
       prev: {
-        translate: ['-80%', '-2rem', 0],
+        translate: ['-80%', '0', 0],
       },
     };
   }
