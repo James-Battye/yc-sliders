@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.2
+
+### Patch Changes
+
+- 7d4e18d: tweaked creative flat
+
 ## 2.0.1
 
 ### Patch Changes
