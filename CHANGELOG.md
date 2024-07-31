@@ -1,5 +1,12 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.1
+
+### Patch Changes
+
+- 35a1491: added new creative
+- dc51f25: added new creative effect
+
 ## 2.0.0
 
 ### Major Changes
