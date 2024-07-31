@@ -82,12 +82,12 @@ export function getSwiperConfig(
     effect: effectsParams.effects,
     grabCursor:
       list.hasAttribute('yc-slider-grab-cursor') &&
-      list.getAttribute('yc-slider-grab-cursor') === 'false'
+        list.getAttribute('yc-slider-grab-cursor') === 'false'
         ? false
         : true,
     allowTouchMove:
       list.hasAttribute('yc-slider-swipe-to-change') &&
-      list.getAttribute('yc-slider-swipe-to-change') === 'false'
+        list.getAttribute('yc-slider-swipe-to-change') === 'false'
         ? false
         : true,
     init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,

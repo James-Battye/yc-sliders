@@ -1,5 +1,5 @@
 export function getEffectsParams(list: HTMLElement) {
-  const effects: { effects: string; [key: string]: any } = {
+  const effects: { effects: string;[key: string]: any } = {
     effects: 'none',
   };
 
@@ -32,6 +32,18 @@ export function getEffectsParams(list: HTMLElement) {
       prev: {
         translate: ['-80%', '-2rem', 0],
         scale: 0.9,
+      },
+    };
+  }
+
+  if (list.getAttribute('yc-slider-effect') === 'creative-flat') {
+    effects.effects = 'creative';
+    effects.creativeEffect = {
+      next: {
+        translate: ['80%', '-2rem', 0],
+      },
+      prev: {
+        translate: ['-80%', '-2rem', 0],
       },
     };
   }
