@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.3
+
+### Patch Changes
+
+- fdd8fd7: I suck
+
 ## 2.0.2
 
 ### Patch Changes
