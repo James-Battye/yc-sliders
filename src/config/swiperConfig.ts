@@ -37,7 +37,7 @@ export function getSwiperConfig(
   const itemClass = getFirstWord(item[0]);
   const listClass = getFirstWord(list);
 
-  // Duplicate slides
+  // Duplicate slides if the attribute 'yc-slider-double-slides' is present
   if (list.getAttribute('yc-slider-double-slides')) {
     item.forEach((item) => {
       const clone = item.cloneNode(true) as HTMLElement;
@@ -47,6 +47,7 @@ export function getSwiperConfig(
 
   // Setting Swiper Parameters
   const swiperParams: SwiperOptions = {
+    // Include Swiper modules
     modules: [
       Navigation,
       Pagination,
@@ -57,60 +58,105 @@ export function getSwiperConfig(
       EffectCreative,
       A11y,
     ],
+
+    // Transition speed in milliseconds
     speed: parseInt(list.getAttribute('yc-slider-speed') || '400') || 400,
+
+    // Space between slides in pixels
     spaceBetween: parseInt(list.getAttribute('yc-slider-slide-gap') || '0') || 0,
+
+    // Number of slides visible at the same time
     slidesPerView:
       list.getAttribute('yc-slider-slides-visible') === 'auto'
         ? 'auto'
         : parseInt(list.getAttribute('yc-slider-slides-visible') || '1') || 1,
+
+    // Enable/disable continuous loop mode
     loop: list.getAttribute('yc-slider-loop') === 'true' ? true : false || false,
+
+    // Slide direction ('horizontal' or 'vertical')
     direction: directionParams,
+
+    // Index of the initial slide
     initialSlide: parseInt(list.getAttribute('yc-slider-initial-slide') || '0') || 0,
+
+    // CSS class of the wrapper element
     wrapperClass: listClass,
+
+    // CSS class of the slide elements
     slideClass: itemClass,
+
+    // Accessibility options
     a11y: {
       enabled: true,
       itemRoleDescriptionMessage: 'slider item',
     },
+
+    // Navigation parameters
     navigation: navigationParams,
+
+    // Number of additional slides to loop
     loopAdditionalSlides: parseInt(list.getAttribute('yc-slider-additional-slides') || '0') || 0,
+
+    // Pagination parameters
     pagination: paginationParams,
+
+    // Autoplay parameters
     autoplay: autoplayParams,
+
+    // Breakpoint parameters for responsive design
     breakpoints: breakpointParams,
-    slidesPerGroup: 1,
+
+    // CSS class for the active slide
+    slideActiveClass: list.getAttribute('yc-slider-active-class') || 'swiper-slide-active',
+
+    // Center slides in the viewport
     centeredSlides: list.getAttribute('yc-slider-centered') === 'true' ? true : false || false,
-    effect: effectsParams.effects,
+
+    // Initialize the Swiper instance
+    init: !list.getAttribute('yc-slider-disabled'),
+
+    // Effect to use for slide transitions
+    effect:
+      window.innerWidth < 480 && effectsParams.effects === 'creative-flat'
+        ? ''
+        : effectsParams.effects,
+
+    // Enable/disable grab cursor
     grabCursor:
       list.hasAttribute('yc-slider-grab-cursor') &&
         list.getAttribute('yc-slider-grab-cursor') === 'false'
         ? false
         : true,
+
+    // Enable/disable touch move
     allowTouchMove:
       list.hasAttribute('yc-slider-swipe-to-change') &&
         list.getAttribute('yc-slider-swipe-to-change') === 'false'
         ? false
         : true,
-    init: list.getAttribute('yc-slider-init') === 'true' ? true : false || true,
+
+    // Set a null controller so users can remap it with the API if needed
     controller: {
       control: null,
     },
   };
 
-  // adding custom effect objects
+  // Adding custom effect objects if specified
   if (effectsParams.fadeEffect) {
     swiperParams.fadeEffect = effectsParams.fadeEffect;
 
     const style = document.createElement('style');
 
     const fadeCss = `
-      .${itemClass} {
-        pointer-events: none;
-      }
+        .${itemClass} {
+          pointer-events: none;
+        }
 
-      .${itemClass}.swiper-slide-active {
-        pointer-events: auto;
-      }
-    `;
+        .${itemClass}.swiper-slide-active {
+          pointer-events: auto;
+        }
+      `;
 
     // Set the CSS text of the style element
     style.textContent = fadeCss;
@@ -119,10 +165,12 @@ export function getSwiperConfig(
     document.head.appendChild(style);
   }
 
+  // Add cards effect if specified
   if (effectsParams.effects === 'cards') {
     swiperParams.cardsEffect = effectsParams.cardEffect;
   }
 
+  // Add creative effect if specified
   if (effectsParams.effects === 'creative') {
     swiperParams.creativeEffect = effectsParams.creativeEffect;
   }

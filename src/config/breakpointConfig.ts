@@ -1,5 +1,7 @@
-export function getBreakpointParams(list: HTMLElement) {
-  const breakpointParams: { [key: string]: { slidesPerView: number } } = {};
+import type { SwiperOptions } from "swiper/types/swiper-options";
+
+export function getBreakpointParams(list: HTMLElement): SwiperOptions['breakpoints'] {
+  const breakpointParams: SwiperOptions['breakpoints'] = {};
 
   if (list.getAttribute('yc-slider-breakpoint-desktop')) {
     breakpointParams['991'] = {

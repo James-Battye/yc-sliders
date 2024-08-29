@@ -1,5 +1,6 @@
 import { Swiper } from 'swiper';
 
+import { initializeSwiperObserver } from './config/filterConfig';
 import { getSwiperConfig } from './config/swiperConfig';
 
 const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
@@ -33,9 +34,36 @@ sliders.forEach((e, index) => {
 
   const swiperParams = getSwiperConfig(e, wrapper, list, item);
 
-  const swiperInstance = new Swiper(wrapper, swiperParams);
+  let swiperInstance;
 
-  sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = swiperInstance;
+  if (!list.getAttribute('yc-slider-init')) {
+    swiperInstance = new Swiper(wrapper, swiperParams);
+  }
+
+  const width = window.innerWidth;
+  const attributeValue = list.getAttribute('yc-slider-init');
+
+  if (attributeValue?.includes('desktop') && width > 991) {
+    swiperInstance = new Swiper(wrapper, swiperParams);
+  }
+
+  if (attributeValue?.includes('tablet') && width > 568 && width <= 991) {
+    swiperInstance = new Swiper(wrapper, swiperParams);
+  }
+
+  if (attributeValue?.includes('mobile') && width >= 320 && width <= 568) {
+    swiperInstance = new Swiper(wrapper, swiperParams);
+  }
+
+  if (swiperInstance) {
+    sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = swiperInstance;
+  }
+
+  if (list.getAttribute('yc-slider-filter')) {
+    if (swiperInstance) {
+      initializeSwiperObserver(swiperInstance, list);
+    }
+  }
 });
 
 declare global {

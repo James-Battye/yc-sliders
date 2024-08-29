@@ -40,10 +40,10 @@ export function getEffectsParams(list: HTMLElement) {
     effects.effects = 'creative';
     effects.creativeEffect = {
       next: {
-        translate: ['80%', '0', 0],
+        translate: ['90%', '-0rem', 0],
       },
       prev: {
-        translate: ['-80%', '0', 0],
+        translate: ['-90%', '-0rem', 0],
       },
     };
   }
