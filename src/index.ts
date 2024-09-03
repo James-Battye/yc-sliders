@@ -7,7 +7,7 @@ import { getSwiperConfig } from './config/swiperConfig';
 const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
 
 // Object to store all Swiper instances
-const sliderInstances: { [key: string]: Swiper } = {};
+const sliderInstances: { [key: string]: { swiper: Swiper, control: boolean } } = {};
 
 // Iterate over each slider component found
 sliders.forEach((e, index) => {
@@ -36,8 +36,10 @@ sliders.forEach((e, index) => {
     return console.error('Error: Only 1 slide, cannot create a slider.');
   }
 
+  const controller = list.getAttribute('yc-controller-role') === 'controller' ? true : false
+
   // Get Swiper configuration based on the element attributes
-  const swiperParams = getSwiperConfig(e, wrapper, list, item);
+  const swiperParams = getSwiperConfig(e, wrapper, list, item, controller);
 
   let swiperInstance;
 
@@ -65,7 +67,7 @@ sliders.forEach((e, index) => {
 
   // Store the Swiper instance if it was initialized
   if (swiperInstance) {
-    sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = swiperInstance;
+    sliderInstances[`${e.getAttribute('yc-slider-component')}-${index}`] = { swiper: swiperInstance, control: controller };
   }
 
   // Initialize MutationObserver if 'yc-slider-filter' attribute is present
@@ -80,13 +82,46 @@ sliders.forEach((e, index) => {
 declare global {
   interface Window {
     ycAttributes: {
-      sliders: { [key: string]: Swiper };
+      sliders: {
+        [key: string]: {
+          swiper: Swiper; // Assuming Swiper is the type you want to keep
+          control: boolean; // New boolean property added inside sliders
+        };
+      };
     };
   }
 }
+
 
 // Ensure ycAttributes is defined on the window object
 window.ycAttributes = window.ycAttributes || {};
 
 // Attach sliderInstances to ycAttributes
 window.ycAttributes.sliders = sliderInstances;
+
+if (window.ycAttributes && window.ycAttributes.sliders) {
+  const sliderKeys = Object.keys(window.ycAttributes.sliders); // Get the keys of the sliders object
+  const length = sliderKeys.length; // Get the number of sliders
+
+  for (let i = 0; i < length; i++) {
+    const key = sliderKeys[i]; // Get the current key
+    const slider = window.ycAttributes.sliders[key]; // Access the slider object
+
+    if (slider.control) {
+      // Search the page for all elements with 'yc-controller-pair' attribute
+      const allPairElements = document.querySelectorAll('[yc-controller-pair]');
+      let controls = []; // Initialize controls array inside the loop
+
+      // Find the matching element (excluding the input element)
+      for (const element of allPairElements) {
+        if (element !== slider.swiper.slidesEl && element.getAttribute('yc-controller-pair') === slider.swiper.slidesEl.getAttribute('yc-controller-pair')) {
+          const parentSwiper = element.parentNode?.swiper;
+          if (parentSwiper) {
+            controls.push(parentSwiper);
+          }
+        }
+      }
+      slider.swiper.controller.control = controls;
+    }
+  }
+}

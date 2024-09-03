@@ -31,7 +31,8 @@ export function getSwiperConfig(
   element: HTMLElement,
   wrapper: HTMLElement,
   list: HTMLElement,
-  item: NodeListOf<HTMLElement>
+  item: NodeListOf<HTMLElement>,
+  controller: Boolean
 ): SwiperOptions {
   // Retrieve attribute-based configurations
   const navigationParams = getNavigationParams(element);
@@ -40,6 +41,7 @@ export function getSwiperConfig(
   const effectsParams = getEffectsParams(list);
   const breakpointParams = getBreakpointParams(list);
   const directionParams = getDirection(list);
+
 
   // Get list, wrapper and item classes
   const itemClass = getFirstWord(item[0]);
