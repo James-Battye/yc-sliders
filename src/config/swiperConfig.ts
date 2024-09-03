@@ -19,6 +19,14 @@ import { getNavigationParams } from './navigationConfig';
 import { getPaginationParams } from './paginationConfig';
 
 // Function to generate the configuration for a Swiper instance based on the provided element
+/**
+ * Generates the configuration for a Swiper instance based on the provided element.
+ * @param {HTMLElement} element - The main element containing the Swiper.
+ * @param {HTMLElement} wrapper - The wrapper element for the Swiper.
+ * @param {HTMLElement} list - The list element containing the slides.
+ * @param {NodeListOf<HTMLElement>} item - The individual slide elements.
+ * @returns {SwiperOptions} - The configuration object for Swiper.
+ */
 export function getSwiperConfig(
   element: HTMLElement,
   wrapper: HTMLElement,
