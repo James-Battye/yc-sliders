@@ -1,5 +1,12 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.4
+
+### Patch Changes
+
+- 4634ed3: Added filter and breakpoint init
+- 30160cb: Beta updates
+
 ## 2.0.3
 
 ### Patch Changes
