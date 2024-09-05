@@ -146,6 +146,10 @@ export function getSwiperConfig(
         ? false
         : true,
 
+    simulateTouch: list.getAttribute('yc-slider-touch') === 'false'
+      ? false
+      : true,
+
     // Set a null controller so users can remap it with the API if needed
     controller: {
       control: null,
