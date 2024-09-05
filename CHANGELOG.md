@@ -1,5 +1,12 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.5
+
+### Patch Changes
+
+- 52eafc1: Added controller functionality
+- b4fc97d: Added simulateTouch
+
 ## 2.0.4
 
 ### Patch Changes
