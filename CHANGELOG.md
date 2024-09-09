@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.6
+
+### Patch Changes
+
+- ed5ab0b: README improvements
+
 ## 2.0.5
 
 ### Patch Changes
