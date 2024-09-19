@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.8
+
+### Patch Changes
+
+- 50635d2: Pesky console logs
+
 ## 2.0.7
 
 ### Patch Changes
