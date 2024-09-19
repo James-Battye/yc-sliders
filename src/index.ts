@@ -52,16 +52,15 @@ sliders.forEach((e, index) => {
   const width = window.innerWidth;
   const attributeValue = list.getAttribute('yc-slider-init');
 
+  console.log(attributeValue?.includes('mobile'));
+  console.log(width);
+
   // Initialize Swiper based on screen width and 'yc-slider-init' attribute
   if (attributeValue?.includes('desktop') && width > 991) {
     swiperInstance = new Swiper(wrapper, swiperParams);
-  }
-
-  if (attributeValue?.includes('tablet') && width > 568 && width <= 991) {
+  } else if (attributeValue?.includes('tablet') && width > 568 && width <= 991) {
     swiperInstance = new Swiper(wrapper, swiperParams);
-  }
-
-  if (attributeValue?.includes('mobile') && width >= 320 && width <= 568) {
+  } else if (attributeValue?.includes('mobile') && width >= 320 && width <= 568) {
     swiperInstance = new Swiper(wrapper, swiperParams);
   }
 
