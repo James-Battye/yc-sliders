@@ -2,7 +2,7 @@ import { getFirstWord } from '../helpers/getClassName';
 
 /**
  * Generates pagination parameters for a given component.
- * 
+ *
  * @param component - The HTML element representing the component.
  * @returns An object containing pagination parameters.
  */

@@ -1,6 +1,6 @@
 /**
  * Determines the direction of a given list element based on its attribute.
- * 
+ *
  * @param {HTMLElement} list - The list element to check for direction.
  * @returns {'horizontal' | 'vertical'} - The direction of the list, defaults to 'horizontal' if not specified or invalid.
  */

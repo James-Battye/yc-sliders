@@ -12,9 +12,9 @@ export function getController(list: HTMLElement) {
   // Find the matching element (excluding the input element)
   for (const element of allPairElements) {
     if (element !== list && element.getAttribute('yc-controller-pair') === pairValue) {
-      element.classList.add(`controller-side-one-${element.getAttribute('yc-controller-id')}`)
+      element.classList.add(`controller-side-one-${element.getAttribute('yc-controller-id')}`);
       console.log(`.controller-side-one-${element.getAttribute('yc-controller-id')}`);
-      return `.controller-side-one-${element.getAttribute('yc-controller-id')}`
+      return `.controller-side-one-${element.getAttribute('yc-controller-id')}`;
     }
   }
 

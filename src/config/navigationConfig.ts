@@ -1,6 +1,6 @@
 /**
  * Retrieves navigation parameters for a given component.
- * 
+ *
  * @param component - The HTML element representing the component.
  * @returns An object containing navigation parameters.
  */

@@ -1,6 +1,6 @@
 /**
  * Generates the effects parameters for a Swiper instance based on the provided list element.
- * 
+ *
  * @param list - The HTML element representing the list.
  * @returns An object containing the effects parameters.
  */

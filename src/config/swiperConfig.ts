@@ -32,7 +32,7 @@ export function getSwiperConfig(
   wrapper: HTMLElement,
   list: HTMLElement,
   item: NodeListOf<HTMLElement>,
-  controller: Boolean
+  controller: boolean
 ): SwiperOptions {
   // Retrieve attribute-based configurations
   const navigationParams = getNavigationParams(element);
@@ -41,7 +41,6 @@ export function getSwiperConfig(
   const effectsParams = getEffectsParams(list);
   const breakpointParams = getBreakpointParams(list);
   const directionParams = getDirection(list);
-
 
   // Get list, wrapper and item classes
   const itemClass = getFirstWord(item[0]);
@@ -135,20 +134,18 @@ export function getSwiperConfig(
     // Enable/disable grab cursor
     grabCursor:
       list.hasAttribute('yc-slider-grab-cursor') &&
-        list.getAttribute('yc-slider-grab-cursor') === 'false'
+      list.getAttribute('yc-slider-grab-cursor') === 'false'
         ? false
         : true,
 
     // Enable/disable touch move
     allowTouchMove:
       list.hasAttribute('yc-slider-swipe-to-change') &&
-        list.getAttribute('yc-slider-swipe-to-change') === 'false'
+      list.getAttribute('yc-slider-swipe-to-change') === 'false'
         ? false
         : true,
 
-    simulateTouch: list.getAttribute('yc-slider-touch') === 'false'
-      ? false
-      : true,
+    simulateTouch: list.getAttribute('yc-slider-touch') === 'false' ? false : true,
 
     // Set a null controller so users can remap it with the API if needed
     controller: {

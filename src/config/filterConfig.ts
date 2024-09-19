@@ -36,7 +36,6 @@ export const initializeSwiperObserver = (swiper: Swiper, list: HTMLElement) => {
       }
     }
 
-    console.log('callback called');
 
     // Update the Swiper instance if changes were detected
     if (shouldUpdate) {

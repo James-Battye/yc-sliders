@@ -1,6 +1,6 @@
 /**
  * Retrieves autoplay parameters from a given HTML element.
- * 
+ *
  * @param {HTMLElement} list - The HTML element to extract autoplay parameters from.
  * @returns {Object} An object containing autoplay parameters.
  */
