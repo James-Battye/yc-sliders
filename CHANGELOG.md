@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.7
+
+### Patch Changes
+
+- aacb445: Fixed breakpoints
+
 ## 2.0.6
 
 ### Patch Changes
