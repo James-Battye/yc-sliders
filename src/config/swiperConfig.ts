@@ -125,10 +125,6 @@ export function getSwiperConfig(
     // Initialize the Swiper instance
     init: !list.getAttribute('yc-slider-disabled'),
 
-    cssMode: true,
-
-    //!list.getAttribute('yc-slider-css-mode') || false,
-
     // Effect to use for slide transitions
     effect:
       window.innerWidth < 480 && effectsParams.effects === 'creative-flat'
