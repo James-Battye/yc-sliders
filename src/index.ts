@@ -77,6 +77,13 @@ sliders.forEach((e, index) => {
   }
 });
 
+// Dispatch the 'ycSlidersLoaded' event after all sliders have been initialized
+window.dispatchEvent(new CustomEvent('ycSlidersLoaded', {
+  detail: {
+    sliders: sliderInstances,
+  },
+}));
+
 // Extend the global window object to include ycAttributes
 declare global {
   interface Window {
@@ -115,7 +122,7 @@ if (window.ycAttributes && window.ycAttributes.sliders) {
         if (
           element !== slider.swiper.slidesEl &&
           element.getAttribute('yc-controller-pair') ===
-            slider.swiper.slidesEl.getAttribute('yc-controller-pair')
+          slider.swiper.slidesEl.getAttribute('yc-controller-pair')
         ) {
           const parentSwiper = element.parentNode?.swiper;
           if (parentSwiper) {

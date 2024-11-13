@@ -125,6 +125,10 @@ export function getSwiperConfig(
     // Initialize the Swiper instance
     init: !list.getAttribute('yc-slider-disabled'),
 
+    cssMode: true,
+
+    //!list.getAttribute('yc-slider-css-mode') || false,
+
     // Effect to use for slide transitions
     effect:
       window.innerWidth < 480 && effectsParams.effects === 'creative-flat'
@@ -134,14 +138,14 @@ export function getSwiperConfig(
     // Enable/disable grab cursor
     grabCursor:
       list.hasAttribute('yc-slider-grab-cursor') &&
-      list.getAttribute('yc-slider-grab-cursor') === 'false'
+        list.getAttribute('yc-slider-grab-cursor') === 'false'
         ? false
         : true,
 
     // Enable/disable touch move
     allowTouchMove:
       list.hasAttribute('yc-slider-swipe-to-change') &&
-      list.getAttribute('yc-slider-swipe-to-change') === 'false'
+        list.getAttribute('yc-slider-swipe-to-change') === 'false'
         ? false
         : true,
 
