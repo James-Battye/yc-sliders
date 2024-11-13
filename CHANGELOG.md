@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.9
+
+### Patch Changes
+
+- 83f250d: Added custom event
+
 ## 2.0.8
 
 ### Patch Changes
