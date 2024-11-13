@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.10
+
+### Patch Changes
+
+- 3c41d7d: Removed css mode
+
 ## 2.0.9
 
 ### Patch Changes
