@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.11
+
+### Patch Changes
+
+- f2c4af22da81722cdf735fb3e3bdd8328a020d0a: Fallbacks added and init logic refnied
+
 ## 2.0.10
 
 ### Patch Changes
