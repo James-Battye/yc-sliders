@@ -1,7 +1,11 @@
 import { Swiper } from 'swiper';
 
+// add fallback if users doesnt have a class on the item
+// When someone inits we need to look at the new contents classname
+
 import { initializeSwiperObserver } from './config/filterConfig';
 import { getSwiperConfig } from './config/swiperConfig';
+import { getFirstWord } from '$utils/getClassName';
 
 // Select all elements with the attribute 'yc-slider-component'
 const sliders = document.querySelectorAll<HTMLElement>(`[yc-slider-component]`);
@@ -32,7 +36,9 @@ sliders.forEach((e, index) => {
       'Error: The item element could not be found. Please ensure that an element with [yc-slider-element="item"] exists.'
     );
   }
-  if (item.length < 1) {
+
+  console.log(list.getAttribute('yc-slider-disabled'));
+  if (item.length < 1 && !list.getAttribute('yc-slider-disabled')) {
     return console.error('Error: Only 1 slide, cannot create a slider.');
   }
 
@@ -59,6 +65,14 @@ sliders.forEach((e, index) => {
     swiperInstance = new Swiper(wrapper, swiperParams);
   } else if (attributeValue?.includes('mobile') && width >= 320 && width <= 568) {
     swiperInstance = new Swiper(wrapper, swiperParams);
+  }
+
+  swiperInstance.refreshClassName = function () {
+    let list = document.querySelector(`.${swiperInstance.params.wrapperClass}`);
+    console.log(list);
+    let item = list.firstChild as HTMLElement;
+    swiperInstance.params.slideClass = getFirstWord(item)
+    swiperInstance.update()
   }
 
   // Store the Swiper instance if it was initialized
