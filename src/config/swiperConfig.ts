@@ -43,7 +43,7 @@ export function getSwiperConfig(
   const directionParams = getDirection(list);
 
   // Get list, wrapper and item classes
-  const itemClass = getFirstWord(item[0]) || 'swiper-item';
+  const itemClass = getFirstWord(item[0]);
   const listClass = getFirstWord(list);
 
   // Duplicate slides if the attribute 'yc-slider-double-slides' is present

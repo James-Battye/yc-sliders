@@ -59,7 +59,7 @@ sliders.forEach((e, index) => {
   const attributeValue = list.getAttribute('yc-slider-init');
 
   // Initialize Swiper based on screen width and 'yc-slider-init' attribute
-  if (attributeValue?.includes('desktop') && width > 991) {
+  if (attributeValue?.includes('desktop') && width > 992) {
     swiperInstance = new Swiper(wrapper, swiperParams);
   } else if (attributeValue?.includes('tablet') && width > 568 && width <= 991) {
     swiperInstance = new Swiper(wrapper, swiperParams);
@@ -69,7 +69,6 @@ sliders.forEach((e, index) => {
 
   swiperInstance.refreshClassName = function () {
     let list = document.querySelector(`.${swiperInstance.params.wrapperClass}`);
-    console.log(list);
     let item = list.firstChild as HTMLElement;
     swiperInstance.params.slideClass = getFirstWord(item)
     swiperInstance.update()
