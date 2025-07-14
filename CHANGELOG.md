@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.12
+
+### Patch Changes
+
+- 4b8cbb46873598db6f90b468c8e6044aff7c1814: tweak breakpoint value
+
 ## 2.0.11
 
 ### Patch Changes
