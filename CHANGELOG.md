@@ -1,5 +1,11 @@
 # @yes-chef/yes-chef-sliders
 
+## 2.0.13
+
+### Patch Changes
+
+- 411639cfbab3609b46c885b844e0aac640dfd054: Minor tweaks
+
 ## 2.0.12
 
 ### Patch Changes
