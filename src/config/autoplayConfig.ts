@@ -8,7 +8,7 @@ export function getAutoplayParams(list: HTMLElement) {
   let autoplayParams = {};
 
   // Check if the 'yc-slider-autoplay' attribute is present
-  if (list.getAttribute('yc-slider-autoplay')) {
+  if (list.getAttribute('yc-slider-autoplay') === "true") {
     // If present, enable autoplay and set the delay
     autoplayParams = {
       enabled: true,
